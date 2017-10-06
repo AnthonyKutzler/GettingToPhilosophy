@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="GettingToPhilosophy">
+    <output-path>$PROJECT_DIR$/out/artifacts/GettingToPhilosophy</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="GettingToPhilosophy/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="GettingToPhilosophy" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="org.jsoup:jsoup:1.10.3" />
+          <element id="library" level="application" name="org.mariadb.jdbc:mariadb-java-client:2.1.0-SNAPSHOT" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
