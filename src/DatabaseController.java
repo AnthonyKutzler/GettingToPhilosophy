@@ -51,6 +51,8 @@ class DatabaseController {
                     //Add message(Found loop, Reached Philosophy.., max links,..) to end
                     wikiPages.add(new WikiPage(page, null));
             }
+            statement.close();
+            connection.close();
             return wikiPages;
         }
         return new ArrayList<>();
@@ -79,5 +81,7 @@ class DatabaseController {
         statement.setString(1, startingURL.substring(startingURL.lastIndexOf("/") + 1, startingURL.length()));
         statement.setString(2, allTitles.substring(0, allTitles.length() - 1));
         statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 }
