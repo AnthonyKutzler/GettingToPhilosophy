@@ -31,7 +31,7 @@ class PhilosophyWebDriver {
      */
     void runDriver() {
         if(!currentPage.contains("en.wikipedia")){
-            pageList.add("Not a wiki link");
+            pageList.add("Not a wiki URL");
             return;
         }
         String nextPage = "nothing";
@@ -39,7 +39,7 @@ class PhilosophyWebDriver {
             if(linkHops > 200){
                 message = "Max Links Reached(200)";
             }else if (pageList.contains(wikiHome + nextPage)) {
-                message = "Found Loop";
+                message = "Found a loop";
                 break;
             }else{
                 nextPage = getLink(currentPage);
