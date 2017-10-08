@@ -19,7 +19,7 @@ class PhilosophyWebDriver {
      */
     PhilosophyWebDriver(String url){
         if(!url.startsWith("http"))
-            currentPage = wikiHome + url;
+            currentPage = wikiHome + "/wiki/" + url;
         else
             currentPage = url;
         linkHops = 0;
