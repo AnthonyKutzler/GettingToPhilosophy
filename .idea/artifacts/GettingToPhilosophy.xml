@@ -10,6 +10,7 @@
         <element id="directory" name="lib">
           <element id="library" level="application" name="org.jsoup:jsoup:1.10.3" />
           <element id="library" level="application" name="org.mariadb.jdbc:mariadb-java-client:2.1.0-SNAPSHOT" />
+          <element id="library" level="application" name="DatabaseConnection" />
         </element>
       </element>
     </root>

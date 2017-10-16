@@ -26,5 +26,7 @@
     <orderEntry type="library" name="org.jsoup:jsoup:1.10.3" level="application" />
     <orderEntry type="library" name="JBoss Weld-2.0.3" level="project" />
     <orderEntry type="library" name="org.mariadb.jdbc:mariadb-java-client:2.1.0-SNAPSHOT" level="application" />
+    <orderEntry type="library" name="junit:junit:4.12" level="application" />
+    <orderEntry type="library" name="DatabaseConnection" level="application" />
   </component>
 </module>

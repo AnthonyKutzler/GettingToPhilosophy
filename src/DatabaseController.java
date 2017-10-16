@@ -1,3 +1,4 @@
+import org.DB.DatabaseConnection;
 import org.mariadb.jdbc.MariaDbDataSource;
 
 import java.sql.Connection;
@@ -6,25 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-class DatabaseController {
-
-    static private final String HOSTNAME = "localhost";
-    static private final String DATABASE = "Philosophy";
-    static private final String USERNAME = "gob";
-    static private final String PASSWORD = "forgottentacoparty";
-    static private final String TABLE_NAME = "gettingToPhilosophy";
-    static private final int PORT = 3306;
+class DatabaseController extends DatabaseConnection implements SqlStatements {
 
     //SQL Statements
-    private static final String SELECT_URL = "SELECT * FROM " + TABLE_NAME + " WHERE startingPage = ?";
-    private static final String INSERT_URL = "INSERT INTO " + TABLE_NAME + " (startingPage, path) VALUES (?, ?)";
-
     private Connection connection;
     private PreparedStatement statement;
 
 
-    DatabaseController() throws SQLException{
-        connection = new MariaDbDataSource(HOSTNAME, PORT, DATABASE).getConnection(USERNAME, PASSWORD);
+    DatabaseController() {
+        super("Philosophy");
+        connection = super.connection;
     }
 
     /**
