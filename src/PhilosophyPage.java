@@ -25,12 +25,13 @@ public class PhilosophyPage implements Serializable {
             }catch (SQLException e){
                 System.out.println(e.getMessage());
             }
+            //If link was not previously run
             if(pages.size() < 1) {
                 driver = new PhilosophyWebDriver(url);
                 driver.runDriver();
                 pages = driver.getPageList();
             }
-            //If URL isnt a wiki link
+            //If URL is a wiki link, add to Database
             if(!pages.get(0).getUrl().startsWith("Not")) {
                 try {
                     new DatabaseController().insertPath(url, pages);

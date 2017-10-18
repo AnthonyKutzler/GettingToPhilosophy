@@ -38,6 +38,7 @@ class PhilosophyWebDriver {
         while(!currentPage.equalsIgnoreCase("http://en.wikipedia.org/wiki/philosophy")){
             if(linkHops > 200){
                 message = "Max Links Reached(200)";
+                break;
             }else if (pageList.contains(wikiHome + nextPage)) {
                 message = "Found a loop";
                 break;
@@ -79,6 +80,9 @@ class PhilosophyWebDriver {
                     if (node.nodeName().equals("#text")) {
                         //if find both open and closed parenthesis do nothing
                         if (node.toString().contains("(") && node.toString().contains(")")) {
+                            //empty, parenthesis opened and closed (not fool proof)
+                            // e.x. {(something(something else)} only first parenthesis is closed,
+                            // but program thinks both are closed
                         } else if(node.toString().contains("(")){
                             if (parenthesis) {
                                 nestedParenthesis = true;
@@ -90,7 +94,7 @@ class PhilosophyWebDriver {
                             else
                                 parenthesis = false;
                         }
-                        //if node is 'a' or link
+                        //if node is 'a' a.k.a. a link and all parenthesis are closed
                     } else if (node.nodeName().equals("a") && !parenthesis && !nestedParenthesis) {
                         Element link = (Element) node;
                         if (link.attr("href").contains("wiki")) {
@@ -111,11 +115,13 @@ class PhilosophyWebDriver {
 
     /**
      * Add each item in String List to WikiPage List
+     * LAST ELEMENT is message(found loop, # of hops, Not wiki page, etc).
      * @return WikiPage List
      */
     List<WikiPage> getPageList() {
         List<WikiPage> wikiPageList = new LinkedList<>();
         for(String page : pageList){
+            //Add all pages to custom object, for easier parsing into dataTable
             wikiPageList.add(new WikiPage(page, page.substring(page.lastIndexOf("/") + 1, page.length())));
         }
         return wikiPageList;
